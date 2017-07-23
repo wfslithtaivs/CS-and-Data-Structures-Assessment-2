@@ -7,7 +7,6 @@ def bubble_sort(lst):
         >>> bubble_sort([3, 5, 7, 2, 4, 1])
         [1, 2, 3, 4, 5, 7]
     """
-    pass
 
     n = len(lst)
     for i in range(n-1):
