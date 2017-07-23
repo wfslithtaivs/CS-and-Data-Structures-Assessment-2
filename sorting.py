@@ -9,6 +9,18 @@ def bubble_sort(lst):
     """
     pass
 
+    n = len(lst)
+    for i in range(n-1):
+        is_swap = False
+        for j in range(n-1):
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+                is_swap = True
+        if not is_swap:
+            break
+
+    return lst
+
 
 def merge_lists(list1, list2):
     """Given two sorted lists of integers, returns a single sorted list
@@ -17,9 +29,18 @@ def merge_lists(list1, list2):
     >>> merge_lists([1, 3, 9], [4, 7, 11])
     [1, 3, 4, 7, 9, 11]
     """
+    result = []
 
-    pass
+    while list1 != [] and list2 != []:
+        if list1[0] > list2[0]:
+            result.append(list2.pop(0))
+        else:
+            result.append(list1.pop(0))
 
+    result.extend(list1)
+    result.extend(list2)
+
+    return result
 
 ##########ADVANCED##########
 def merge_sort(lst):
@@ -35,10 +56,14 @@ def merge_sort(lst):
     >>> merge_sort([6, 2, 3, 9, 0, 1])
     [0, 1, 2, 3, 6, 9]
     """
-    pass
+    if len(lst) == 1:
+        return lst
 
+    mid = int(len(lst) / 2)
+    left = merge_sort(lst[0:mid])
+    right = merge_sort(lst[mid:])
 
-
+    return merge_lists(left, right)
 
 #####################################################################
 # END OF ASSIGNMENT: You can ignore everything below.
